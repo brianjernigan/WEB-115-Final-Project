@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WEB-115 Final Project</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+            }
+
+            .banner {
+                background: lightblue;
+            }
+
+            .banner_content {
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+            }
+
+            .banner_title {
+                flex-grow: 1;
+                line-height: 1.4;
+                font-family: 'Quicksand', sans-serif;
+                font-size: x-large;
+            }
+
+            .banner_text {
+                font-size: medium;
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+            }
+
+            form {
+                padding: 16px;
+                font-size: large;
+            }
+
+            .myButton {
+                padding: 15px;
+                padding-left: 100px;
+            }
+        </style>
+        <script src="projectJS.js"></script>
+    </head>
+    <body>
+        <div class="banner">
+            <div class="banner_content">
+                <div class="banner_logo">
+                    <img src="PPFitness.png" alt="Perfectly Portioned Fitness">
+                </div>
+                <div class="banner_title">
+                    <strong>Build Your Meal Plan</strong><br>
+                    <div class="banner_text">
+                        Brian Jernigan, WEB-115, 0003
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="myForm">
+            <label for="userName">Enter Your Name:</label>
+            <input type="text" id="userName" name="userName"><br>
+            <label for="userEmail">Enter Your Email Address:</label>
+            <input type="email" id="userEmail" name="userEmail"><br>
+            <label for="userGoal">Choose Your Weekly Goal:</label>
+            <select id="userGoal" name="userGoal"><br>
+                <option value="select">Select a Goal</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+            </select><br>
+            <div class="myButton">
+                <button type="submit" id="submitButton">Build Your Meal Plan</button>
+            </div>
+        </form>
+        <div class="text" id="output">
+        </div>
+    </body>
+</html>
