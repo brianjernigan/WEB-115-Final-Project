@@ -17,6 +17,18 @@ class Day {
     }
 }
 
+class Week {
+    constructor(dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, daySeven) {
+        this.dayOne = dayOne;
+        this.dayTwo = dayTwo;
+        this.dayThree = dayThree;
+        this.dayFour = dayFour;
+        this.dayFive = dayFive;
+        this.daySix = daySix;
+        this.daySeven = daySeven;
+    }
+}
+
 // low-cal breakfast
 const veggieOmelet = new Food("Veggie Omelette", 250, "breakfast");
 const chiaPudding = new Food("Overnight Chia Pudding", 150, "breakfast");
@@ -120,6 +132,46 @@ const cheeseburger = new Food("Cheeseburger with Sweet Potato Fries", 750, "dinn
 const salmonVegQuinoa = new Food("Salmon with Quinoa and Roasted Vegetables", 650, "dinner");
 const cheatDinnerItems = [beefSteak, pastaShrimp, stuffedChicken, cheeseburger, salmonVegQuinoa];
 
+const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+
+function generateRandomFood(foodArray) {
+    randomIndex = Math.floor(foodArray.length * Math.random());
+    return foodArray[randomIndex];
+}
+
+
+function generateDay(weekday) {
+    userGoal = document.querySelector('#userGoals');
+    if (userGoal.value == "loseWeight") {
+        var breakfast = generateRandomFood(lowCalBreakfastItems);
+        var amSnack = generateRandomFood(lowCalAMSnacks);
+        var lunch = generateRandomFood(lowCalLunch);
+        var pmSnack = generateRandomFood(lowCalPMSnacks);
+        var dinner = generateRandomFood(lowCalDinnerItems);
+        var loseDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
+        return loseDay;
+    }
+    else if (userGoal.value == "maintainWeight") {
+        var breakfast = generateRandomFood(normalBreakfastItems);
+        var amSnack = generateRandomFood(normalAMSnacks);
+        var lunch = generateRandomFood(normalLunchItems);
+        var pmSnack = generateRandomFood(normalPMSnacks);
+        var dinner = generateRandomFood(normalDinnerItems);
+        var maintainDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
+        return maintainDay;
+    }
+    else {
+        var breakfast = generateRandomFood(cheatBreakfastItems);
+        var amSnack = generateRandomFood(cheatAMSnacks);
+        var lunch = generateRandomFood(cheatLunchItems);
+        var pmSnack = generateRandomFood(cheatPMSnacks);
+        var dinner = generateRandomFood(cheatDinnerItems);
+        var gainDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
+        return gainDay;
+    }
+}
+
 
 function checkEmail() {
     var userEmail = document.getElementById("userEmail").value;
@@ -141,17 +193,23 @@ function checkCalories() {
     }
 }
 
-function createDay() {
+function createWeek() {
+    const dayOne = generateDay("Monday");
+    const dayTwo = generateDay("Tuesday");
+    const dayThree = generateDay("Wednesday");
+    const dayFour = generateDay("Thursday");
+    const dayFive = generateDay("Friday");
+    const daySix = generateDay("Saturday");
+    const daySeven = generateDay("Sunday");
+    const userWeek = new Week(dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, daySeven);
 
-    const monday = new Day("Monday", oatmeal, granolaBar, turkeySandwich, beefJerky, steakPotatoes);
-
-    htmlHead = ("<html>\n<head>\n<title>Your Personalized Meal Plan</title>\n</head>\n<body>\n");
-    htmlHead += ("<body>\n");
-    htmlHead += (monday.breakfast.name + monday.amSnack.name);
-    htmlHead += ("</body>\n");
-    htmlHead += ("</html>");
+    html = ("<html>\n<head>\n<title>Your Personalized Meal Plan</title>\n</head>\n<body>\n");
+    html += ("<body>\n");
+    html += (userWeek.dayOne.name + ": Breakfast: " + userWeek.dayOne.breakfast.name);
+    html += ("</body>\n");
+    html += ("</html>");
     flyWindow = window.open('about:blank', 'myPop', 'width=400, height=400, left=400, top=400');
-    flyWindow.document.write(htmlHead);
+    flyWindow.document.write(html);
 
 }
 
@@ -171,6 +229,6 @@ function handleClick() {
 }
 
 var myButton = document.getElementById("submitButton");
-myButton.addEventListener("click", handleClick);
+myButton.addEventListener("click", createWeek);
 
 
