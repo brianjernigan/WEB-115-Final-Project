@@ -15,6 +15,16 @@ class Day {
         this.pmSnack = pmSnack;
         this.dinner = dinner;
     }
+
+    dailyCalories() {
+        var sum = 0
+        sum += this.breakfast.calories;
+        sum += this.amSnack.calories;
+        sum += this.lunch.calories;
+        sum += this.pmSnack.calories;
+        sum += this.dinner.calories;
+        return sum;
+    }
 }
 
 class Week {
@@ -26,6 +36,18 @@ class Week {
         this.dayFive = dayFive;
         this.daySix = daySix;
         this.daySeven = daySeven;
+    }
+
+    weeklyCalories() {
+        var sum = 0
+        sum += this.dayOne.dailyCalories();
+        sum += this.dayTwo.dailyCalories();
+        sum += this.dayThree.dailyCalories();
+        sum += this.dayFour.dailyCalories();
+        sum += this.dayFive.dailyCalories();
+        sum += this.daySix.dailyCalories();
+        sum += this.daySeven.dailyCalories();
+        return sum;
     }
 }
 
@@ -132,14 +154,10 @@ const cheeseburger = new Food("Cheeseburger with Sweet Potato Fries", 750, "dinn
 const salmonVegQuinoa = new Food("Salmon with Quinoa and Roasted Vegetables", 650, "dinner");
 const cheatDinnerItems = [beefSteak, pastaShrimp, stuffedChicken, cheeseburger, salmonVegQuinoa];
 
-const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-
-
 function generateRandomFood(foodArray) {
     randomIndex = Math.floor(foodArray.length * Math.random());
     return foodArray[randomIndex];
 }
-
 
 function generateDay(weekday) {
     userGoal = document.querySelector('#userGoals');
@@ -202,10 +220,13 @@ function createWeek() {
     const daySix = generateDay("Saturday");
     const daySeven = generateDay("Sunday");
     const userWeek = new Week(dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, daySeven);
+    var weeklyCals = userWeek.weeklyCalories();
+    console.log(weeklyCals);
 
     html = ("<html>\n<head>\n<title>Your Personalized Meal Plan</title>\n</head>\n<body>\n");
     html += ("<body>\n");
-    html += (userWeek.dayOne.name + ": Breakfast: " + userWeek.dayOne.breakfast.name);
+    html += (userWeek.dayOne.name + ": Breakfast: " + userWeek.dayOne.breakfast.name + "<br>");
+    html += ("Weekly Calories: " + userWeek.weeklyCalories());
     html += ("</body>\n");
     html += ("</html>");
     flyWindow = window.open('about:blank', 'myPop', 'width=400, height=400, left=400, top=400');
