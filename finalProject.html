@@ -44,7 +44,7 @@
                 padding-left: 100px;
             }
         </style>
-        <script src="projectJS.js" defer></script>
+        <script src="projectJS.js" async></script>
     </head>
     <body>
         <div class="banner">
@@ -65,13 +65,16 @@
             <input type="text" id="userName" name="userName"><br>
             <label for="userEmail">Enter Your Email Address:</label>
             <input type="email" id="userEmail" name="userEmail"><br>
-            <label for="userCalories">Enter your Daily Calorie Goal:</label>
-            <input type="text" id="userCalories" name="userCalories"><br>
+            <label for="userGoal">Choose Your Goal for This Week:</label>
+            <select name="goals" id="userGoals">
+                <option disabled selected value></option>
+                <option value="loseWeight">Lose Weight</option>
+                <option value="maintainWeight">Maintain Weight</option>
+                <option value="gainWeight">Gain Weight</option>
+            </select>
             <div class="myButton">
                 <button type="submit" id="submitButton">Build Your Meal Plan</button>
             </div>
         </form>
-        <div class="text" id="output">
-        </div>
     </body>
 </html>
