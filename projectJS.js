@@ -72,11 +72,11 @@ const grainToast = new Food("Whole Grain Toast with Avocado and Egg", 250, "Brea
 const smoothieBowl = new Food("Smoothie Bowl", 275, "Breakfast");
 const lowCalBreakfastItems = [veggieOmelet, chiaPudding, yogurtParfait, grainToast, smoothieBowl];
 // normal breakfast 
-const fruitPancakes = new Food("Whole Grain Pancakes with Fruit", 350, "Breakfast");
-const breakfastBurrito = new Food("Breakfast Burrito", 400, "Breakfast");
-const quinoaBowl = new Food("Breakfast Quinoa Bowl", 400, "Breakfast");
-const oatmeal = new Food("Oatmeal with Nut Butter and Seeds", 300, "Breakfast");
-const eggVeggieWrap = new Food("Egg and Veggie Wrap", 375, "Breakfast");
+const fruitPancakes = new Food("Whole Grain Pancakes with Fruit", 450, "Breakfast");
+const breakfastBurrito = new Food("Breakfast Burrito", 500, "Breakfast");
+const quinoaBowl = new Food("Breakfast Quinoa Bowl", 500, "Breakfast");
+const oatmeal = new Food("Oatmeal with Nut Butter and Seeds", 400, "Breakfast");
+const eggVeggieWrap = new Food("Egg and Veggie Wrap", 475, "Breakfast");
 const normalBreakfastItems = [fruitPancakes, breakfastBurrito, quinoaBowl, oatmeal, eggVeggieWrap];
 // cheat breakfast
 const avoToastWBacon = new Food("Avocado Toast with Eggs and Bacon", 550, "Breakfast");
@@ -93,11 +93,11 @@ const riceCakes = new Food("Rice Cakes with Sliced Banana", 100, "Morning Snack"
 const cottageCheeseToast = new Food("Whole Grain Toast with Cottage Cheese and Berries", 125, "Morning Snack");
 const lowCalAMSnacks = [hbEggs, appleButter, yogurtChia, riceCakes, cottageCheeseToast];
 // normal am snacks
-const proteinSmoothie = new Food("Smoothie with Protein Powder", 300, "Morning Snack");
-const granolaBar = new Food("Whole Grain Granola Bar", 180, "Morning Snack");
-const trailMix = new Food("Trail Mix", 200, "Morning Snack");
-const veggieMuffin = new Food("Veggie Omelette Muffins", 300, "Morning Snack");
-const toastButterFruit = new Food("Whole Grain Toast with Nut Butter and Sliced Fruit", 200, "Morning Snack");
+const proteinSmoothie = new Food("Smoothie with Protein Powder", 400, "Morning Snack");
+const granolaBar = new Food("Whole Grain Granola Bar", 280, "Morning Snack");
+const trailMix = new Food("Trail Mix", 300, "Morning Snack");
+const veggieMuffin = new Food("Veggie Omelette Muffins", 400, "Morning Snack");
+const toastButterFruit = new Food("Whole Grain Toast with Nut Butter and Sliced Fruit", 300, "Morning Snack");
 const normalAMSnacks = [proteinSmoothie, granolaBar, trailMix, veggieMuffin, toastButterFruit];
 // cheat am snacks
 const butterBananaSmoothie = new Food("Nut Butter and Banana Smoothie", 300, "Morning Snack");
@@ -114,11 +114,11 @@ const lentilSoup = new Food("Lentil Soup with Mixed Vegetables", 325, "Lunch");
 const quinoaSalad = new Food("Quinoa Salad with Roasted Vegetables", 375, "Lunch");
 const lowCalLunch = [grilledChickenSalad, veggieWrap, zucchiniNoodles, lentilSoup, quinoaSalad];
 // normal lunch
-const grilledChickenWrap = new Food("Grilled Chicken Wrap", 425, "Lunch");
-const buddhaBowl = new Food("Quinoa Buddha Bowl", 450, "Lunch");
-const turkeyBurger = new Food("Turkey or Veggie Burger with Sweet Potato Fries", 550, "Lunch");
-const salmonSalad = new Food("Salmon Salad", 475, "Lunch");
-const pastaVeggies = new Food("Whole Wheat Pasta with Vegetables", 550, "Lunch");
+const grilledChickenWrap = new Food("Grilled Chicken Wrap", 525, "Lunch");
+const buddhaBowl = new Food("Quinoa Buddha Bowl", 550, "Lunch");
+const turkeyBurger = new Food("Turkey or Veggie Burger with Sweet Potato Fries", 650, "Lunch");
+const salmonSalad = new Food("Salmon Salad", 575, "Lunch");
+const pastaVeggies = new Food("Whole Wheat Pasta with Vegetables", 650, "Lunch");
 const normalLunchItems = [grilledChickenWrap, buddhaBowl, turkeyBurger, salmonSalad, pastaVeggies];
 // cheat lunch
 const steakSweetPotato = new Food("Steak and Sweet Potato", 700, "Lunch");
@@ -135,11 +135,11 @@ const popcorn = new Food("Air-Popped Popcorn", 100, "Afternoon Snack");
 const riceCakesNutButter = new Food("Rice Cakes with Nut Butter", 150, "Afternoon Snack");
 const lowCalPMSnacks = [edamame, yogurtAndBerries, carrotHummus, popcorn, riceCakesNutButter];
 // normal pm snacks
-const cottageCheese = new Food("Cottage Cheese with Fresh Fruit", 200, "Afternoon Snack");
-const crackers = new Food("Whole Grain Crackers with Cheese", 300, "Afternoon Snack");
-const roastChick = new Food("Roasted Chickpeas", 280, "Afternoon Snack");
-const almondsFruit = new Food("Almonds with Dried Fruit", 250, "Afternoon Snack");
-const beefJerky = new Food("Beef Jerky", 200, "Afternoon Snack");
+const cottageCheese = new Food("Cottage Cheese with Fresh Fruit", 300, "Afternoon Snack");
+const crackers = new Food("Whole Grain Crackers with Cheese", 400, "Afternoon Snack");
+const roastChick = new Food("Roasted Chickpeas", 380, "Afternoon Snack");
+const almondsFruit = new Food("Almonds with Dried Fruit", 350, "Afternoon Snack");
+const beefJerky = new Food("Beef Jerky", 300, "Afternoon Snack");
 const normalPMSnacks = [cottageCheese, crackers, roastChick, almondsFruit, beefJerky];
 // cheat pm snacks
 const avoToastWEggs = new Food("Avocado Toast with Eggs", 350, "Afternoon Snack");
@@ -156,11 +156,11 @@ const zuccNoodlesTomato = new Food("Zucchini Noodles with Tomato Sauce", 300, "D
 const turkeyChili = new Food("Turkey or Veggie Chili", 375, "Dinner");
 const lowCalDinnerItems = [chickenVeggies, salmonAsparagus, vegStirFry, zuccNoodlesTomato, turkeyChili];
 // normal dinner
-const shrimpTacos = new Food("Grilled Shrimp Tacos", 425, "Dinner");
-const yakiChicken = new Food("Teriyaki Chicken Stir-Fry", 500, "Dinner");
-const meatballs = new Food("Spaghetti with Turkey Meatballs", 475, "Dinner");
-const bakedChicken = new Food("Baked Chicken with Roasted Vegetables", 450, "Dinner");
-const vegQuinoa = new Food("Veggie Quinoa Bowl", 400, "Dinner");
+const shrimpTacos = new Food("Grilled Shrimp Tacos", 525, "Dinner");
+const yakiChicken = new Food("Teriyaki Chicken Stir-Fry", 600, "Dinner");
+const meatballs = new Food("Spaghetti with Turkey Meatballs", 575, "Dinner");
+const bakedChicken = new Food("Baked Chicken with Roasted Vegetables", 550, "Dinner");
+const vegQuinoa = new Food("Veggie Quinoa Bowl", 500, "Dinner");
 const normalDinnerItems = [shrimpTacos, yakiChicken, meatballs, bakedChicken, vegQuinoa];
 // cheat dinner
 const beefSteak = new Food("Beef Steak with Roasted Potatoes", 700, "Dinner");
