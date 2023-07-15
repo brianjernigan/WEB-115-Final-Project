@@ -124,7 +124,7 @@ const normalLunchItems = [grilledChickenWrap, buddhaBowl, turkeyBurger, salmonSa
 const steakSweetPotato = new Food("Steak and Sweet Potato", 700, "Lunch");
 const chickenAlfredo = new Food("Chicken Alfredo Pasta", 800, "Lunch");
 const beefStirFry = new Food("Beef Stir-Fry with Rice", 850, "Lunch");
-const salmonQuinoa = new Food("Salmon with Quinoa and Avocao", 650, "Lunch");
+const salmonQuinoa = new Food("Salmon with Quinoa and Avocado", 650, "Lunch");
 const veggieSandwich = new Food("Loaded Veggie Sandwich", 600, "Lunch");
 const cheatLunchItems = [steakSweetPotato, chickenAlfredo, beefStirFry, salmonQuinoa, veggieSandwich]
 // low cal pm snacks
@@ -249,7 +249,6 @@ function writeWeek() {
     html += ("</body>\n</html>");
     flyWindow = window.open('about:blank', 'myPop', 'width=600, height=800, left=450, top=100');
     flyWindow.document.write(html);
-    return flyWindow;
 }
 
 function handleClick() {
