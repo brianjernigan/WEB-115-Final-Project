@@ -51,6 +51,17 @@ class Week {
         sum += this.daySeven.dailyCalories();
         return sum;
     }
+
+    getGoal() {
+        userGoal = document.querySelector('#userGoals');
+        if (userGoal.value == "loseWeight") {
+            return "Lose Weight";
+        } else if (userGoal.value == "maintainWeight") {
+            return "Maintain Weight";
+        } else {
+            return "Gain Weight";
+        }
+    }
 }
 
 // low-cal breakfast
@@ -195,7 +206,6 @@ function generateDay(weekday) {
     }
 }
 
-
 function checkEmail() {
     var userEmail = document.getElementById("userEmail").value;
     // email validation regex
@@ -222,21 +232,22 @@ function writeWeek() {
     var userWeek = createWeek();
     var userName = document.getElementById("userName").value
     var html = ("<html>\n<head>\n<title>");
-    html += (userName + "'s Personalized Meal Plan</title>\n</head>\n<body style=\"background-color: lightblue;\">\n");
+    html += (userName + "'s Personalized Meal Plan</title>\n</head>\n<body style=\"background-color: lightblue; margin-top : -10px;\">\n");
     html += ("<div style=\"text-align : center; margin-bottom : -20px;\"><img src=\"PPFitness.png\" style=\"height : 200px; width : 200px;\"></div>");
     html += ("<script>function printWindow() { window.print(); }</script>");
+    html += ("<h2 style=\"text-align : center; margin : 0; font-weight : bold; font-family: 'Quicksand', sans-serif;\">This Week's Goal: " + userWeek.getGoal() + "</h2>");
     for (let i = 0; i < userWeek.calendar.length; i++) {
-        html += ("<h1 style=\"text-align : center; margin : 0; font-weight : bold; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].name + "</h1>");
+        html += ("<h1 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\"><u>" + userWeek.calendar[i].name + "</u></h1>");
         for (let j = 0; j < userWeek.calendar[i].plan.length; j++) {
-            html += ("<h2 style=\"text-align : center; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].meal + ": " + userWeek.calendar[i].plan[j].name + "</h2>");
-            html += ("<h4 style=\"text-align : center; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].calories + " calories</h4>");
+            html += ("<h3 style=\"text-align : center; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].meal + ": " + userWeek.calendar[i].plan[j].name + "</h3>");
+            html += ("<h5 style=\"text-align : center; margin-top : -20px; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].calories + " calories</h5>");
         }
-        html += ("<h3 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\">Daily Calories: " + userWeek.calendar[i].dailyCalories() + "</h3>");
+        html += ("<h4 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\"><strong>Daily Calories: " + userWeek.calendar[i].dailyCalories() + "</strong></h4>");
     }
-    html += ("<h1 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\"><strong>Total Calories for the Week: " + userWeek.weeklyCalories() + "</strong></h1>");
+    html += ("<h2 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\"><strong>Total Calories for the Week: " + userWeek.weeklyCalories() + "</strong></h2>");
     html += ("<div style=\"text-align : center\"><button type=\"button\" style=\"background : #FFF8DC; border-color : #FFF8DC;\" onclick=\"printWindow()\">Print Plan</button></div>");
     html += ("</body>\n</html>");
-    flyWindow = window.open('about:blank', 'myPop', 'width=800, height=800, left=450, top=100');
+    flyWindow = window.open('about:blank', 'myPop', 'width=600, height=800, left=450, top=100');
     flyWindow.document.write(html);
     return flyWindow;
 }
