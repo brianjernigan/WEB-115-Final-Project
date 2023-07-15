@@ -125,8 +125,11 @@ const riceCakesNutButter = new Food("Rice Cakes with Nut Butter", 150, "Afternoo
 const lowCalPMSnacks = [edamame, yogurtAndBerries, carrotHummus, popcorn, riceCakesNutButter];
 // normal pm snacks
 const cottageCheese = new Food("Cottage Cheese with Fresh Fruit", 200, "Afternoon Snack");
-const crackers = new Food("Whole Grain Crackers with Cheese", 250, "Afternoon Snack");
-const normalPMSnacks = [cottageCheese, crackers, yogurtParfait, trailMix, appleButter];
+const crackers = new Food("Whole Grain Crackers with Cheese", 300, "Afternoon Snack");
+const roastChick = new Food("Roasted Chickpeas", 280, "Afternoon Snack");
+const almondsFruit = new Food("Almonds with Dried Fruit", 250, "Afternoon Snack");
+const beefJerky = new Food("Beef Jerky", 200, "Afternoon Snack");
+const normalPMSnacks = [cottageCheese, crackers, roastChick, almondsFruit, beefJerky];
 // cheat pm snacks
 const avoToastWEggs = new Food("Avocado Toast with Eggs", 350, "Afternoon Snack");
 const energyBalls = new Food("Energy Balls", 275, "Afternoon Snack");
@@ -156,7 +159,7 @@ const cheeseburger = new Food("Cheeseburger with Sweet Potato Fries", 750, "Dinn
 const salmonVegQuinoa = new Food("Salmon with Quinoa and Roasted Vegetables", 650, "Dinner");
 const cheatDinnerItems = [beefSteak, pastaShrimp, stuffedChicken, cheeseburger, salmonVegQuinoa];
 
-function generateRandomFood(foodArray) {
+function generateRandomIndex(foodArray) {
     randomIndex = Math.floor(foodArray.length * Math.random());
     return foodArray[randomIndex];
 }
@@ -164,29 +167,29 @@ function generateRandomFood(foodArray) {
 function generateDay(weekday) {
     userGoal = document.querySelector('#userGoals');
     if (userGoal.value == "loseWeight") {
-        var breakfast = generateRandomFood(lowCalBreakfastItems);
-        var amSnack = generateRandomFood(lowCalAMSnacks);
-        var lunch = generateRandomFood(lowCalLunch);
-        var pmSnack = generateRandomFood(lowCalPMSnacks);
-        var dinner = generateRandomFood(lowCalDinnerItems);
+        var breakfast = generateRandomIndex(lowCalBreakfastItems);
+        var amSnack = generateRandomIndex(lowCalAMSnacks);
+        var lunch = generateRandomIndex(lowCalLunch);
+        var pmSnack = generateRandomIndex(lowCalPMSnacks);
+        var dinner = generateRandomIndex(lowCalDinnerItems);
         var loseDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
         return loseDay;
     }
     else if (userGoal.value == "maintainWeight") {
-        var breakfast = generateRandomFood(normalBreakfastItems);
-        var amSnack = generateRandomFood(normalAMSnacks);
-        var lunch = generateRandomFood(normalLunchItems);
-        var pmSnack = generateRandomFood(normalPMSnacks);
-        var dinner = generateRandomFood(normalDinnerItems);
+        var breakfast = generateRandomIndex(normalBreakfastItems);
+        var amSnack = generateRandomIndex(normalAMSnacks);
+        var lunch = generateRandomIndex(normalLunchItems);
+        var pmSnack = generateRandomIndex(normalPMSnacks);
+        var dinner = generateRandomIndex(normalDinnerItems);
         var maintainDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
         return maintainDay;
     }
     else {
-        var breakfast = generateRandomFood(cheatBreakfastItems);
-        var amSnack = generateRandomFood(cheatAMSnacks);
-        var lunch = generateRandomFood(cheatLunchItems);
-        var pmSnack = generateRandomFood(cheatPMSnacks);
-        var dinner = generateRandomFood(cheatDinnerItems);
+        var breakfast = generateRandomIndex(cheatBreakfastItems);
+        var amSnack = generateRandomIndex(cheatAMSnacks);
+        var lunch = generateRandomIndex(cheatLunchItems);
+        var pmSnack = generateRandomIndex(cheatPMSnacks);
+        var dinner = generateRandomIndex(cheatDinnerItems);
         var gainDay = new Day(weekday, breakfast, amSnack, lunch, pmSnack, dinner);
         return gainDay;
     }
@@ -217,16 +220,25 @@ function createWeek() {
 
 function writeWeek() {
     var userWeek = createWeek();
-    var html = ("<html>\n<head>\n<title>Your Personalized Meal Plan</title>\n</head>\n<body>\n");
+    var userName = document.getElementById("userName").value
+    var html = ("<html>\n<head>\n<title>");
+    html += (userName + "'s Personalized Meal Plan</title>\n</head>\n<body style=\"background-color: lightblue;\">\n");
+    html += ("<div style=\"text-align : center; margin-bottom : -20px;\"><img src=\"PPFitness.png\" style=\"height : 200px; width : 200px;\"></div>");
+    html += ("<script>function printWindow() { window.print(); }</script>");
     for (let i = 0; i < userWeek.calendar.length; i++) {
-        html += ("<h1>" + userWeek.calendar[i].name + "</h1>");
+        html += ("<h1 style=\"text-align : center; margin : 0; font-weight : bold; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].name + "</h1>");
         for (let j = 0; j < userWeek.calendar[i].plan.length; j++) {
-            html += ("<h2>" + userWeek.calendar[i].plan[j].meal + ": " + userWeek.calendar[i].plan[j].name + "</h2>");
+            html += ("<h2 style=\"text-align : center; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].meal + ": " + userWeek.calendar[i].plan[j].name + "</h2>");
+            html += ("<h4 style=\"text-align : center; font-family: 'Quicksand', sans-serif;\">" + userWeek.calendar[i].plan[j].calories + " calories</h4>");
         }
+        html += ("<h3 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\">Daily Calories: " + userWeek.calendar[i].dailyCalories() + "</h3>");
     }
+    html += ("<h1 style=\"text-align : center; font-weight : bold; font-family: 'Quicksand', sans-serif;\"><strong>Total Calories for the Week: " + userWeek.weeklyCalories() + "</strong></h1>");
+    html += ("<div style=\"text-align : center\"><button type=\"button\" style=\"background : #FFF8DC; border-color : #FFF8DC;\" onclick=\"printWindow()\">Print Plan</button></div>");
     html += ("</body>\n</html>");
     flyWindow = window.open('about:blank', 'myPop', 'width=800, height=800, left=450, top=100');
     flyWindow.document.write(html);
+    return flyWindow;
 }
 
 function handleClick() {
@@ -239,6 +251,6 @@ function handleClick() {
 }
 
 var myButton = document.getElementById("submitButton");
-myButton.addEventListener("click", writeWeek);
+myButton.addEventListener("click", handleClick);
 
 
